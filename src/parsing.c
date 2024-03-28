@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:10:28 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/14 19:29:00 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/03/28 23:35:59 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,9 @@ int	check_path(t_game *game)
 			clean_map(path);
 			exit_error(game, "Memory allocation failed\n");
 		}
-		ft_printf("path[%d]: %s\n", i, path[i]);
 	}
 	reached = flood_fill(path, game->player_x, game->player_y);
 	clean_map(path);
-	ft_printf("Temporary path cleared\n");
 	return (reached);
 }
 

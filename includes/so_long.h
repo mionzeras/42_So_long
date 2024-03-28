@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:56:49 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/14 19:40:48 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/03/28 23:23:15 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,6 @@
 # define DOWN	65364
 # define RIGHT	65363
 
-// This struct will be used to store the game images
-typedef struct s_game_imgs
-{
-	void	*img_p;
-	void	*img_c;
-	void	*img_e;
-	void	*img_w;
-	void	*img_bg;
-}	t_game_imgs;
-
 // This struct will be used to store the game
 typedef struct s_game
 {
@@ -57,21 +47,26 @@ typedef struct s_game
 	int	p_count;
 	int	player_x;
 	int	player_y;
-	int	count_moves;
+	int	moves;
 
 	char	**map;
 	char	*file_location;
 	
+	void	*img_p;
+	void	*img_c;
+	void	*img_1;
+	void	*img_w;
+	void	*img_0;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	
-	t_game_imgs		*imgs;
 }	t_game;
 
 // clean.c
 void	clean_map(char **map);
 void	clean_imgs(t_game *game);
 void	clean_display(t_game *game);
+int		quit_game(t_game *game);
 
 // create_map.c
 void	map_create(t_game *game);
@@ -79,6 +74,16 @@ void	read_map(t_game	*game);
 
 // graphics.c
 void	init_mlx(t_game *game);
+void	load_images(t_game *game);
+void	render_tiles(t_game *game, int x, int y);
+void	render_map(t_game *game);
+
+// moves.c
+int	move_up(t_game *game);
+int	move_down(t_game *game);
+int	move_left(t_game *game);
+int	move_right(t_game *game);
+int	check_key(int key, t_game *game);
 
 // parsing.c
 int	game_counters(t_game *game);

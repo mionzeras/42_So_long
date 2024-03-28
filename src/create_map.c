@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:19:58 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/14 19:24:39 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/03/28 23:34:54 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,5 @@ void	read_map(t_game	*game)
 	}
 	game->map_height = game->i;
 	game->map_width = game->j;
-	ft_printf("map_height: %d, map_width: %d\n", game->map_height, game->map_width);
 	close(fd);
 }

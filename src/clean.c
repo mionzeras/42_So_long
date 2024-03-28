@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:01:59 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/14 15:24:20 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/03/28 23:14:13 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,13 @@ void	clean_map(char **map)
 
 void	clean_imgs(t_game *game)
 {
-	if (game->imgs)
+	if (game->img_0 || game->img_1 || game->img_c || game->img_p || game->img_w)
 	{
-		mlx_destroy_image(game->mlx_ptr, game->imgs->img_p);
-		mlx_destroy_image(game->mlx_ptr, game->imgs->img_c);
-		mlx_destroy_image(game->mlx_ptr, game->imgs->img_e);
-		mlx_destroy_image(game->mlx_ptr, game->imgs->img_w);
-		mlx_destroy_image(game->mlx_ptr, game->imgs->img_bg);
-		free(game->imgs);
+		mlx_destroy_image(game->mlx_ptr, game->img_p);
+		mlx_destroy_image(game->mlx_ptr, game->img_c);
+		mlx_destroy_image(game->mlx_ptr, game->img_1);
+		mlx_destroy_image(game->mlx_ptr, game->img_w);
+		mlx_destroy_image(game->mlx_ptr, game->img_0);
 	}
 }
 
@@ -41,8 +40,7 @@ void	clean_display(t_game *game)
 {
 	if (!game)
 		return ;
-	if (game->imgs)
-		clean_imgs(game);
+	clean_imgs(game);
 	if (game->map)
 		clean_map(game->map);
 	free (game->file_location);
@@ -51,5 +49,11 @@ void	clean_display(t_game *game)
 	if (game->mlx_ptr)
 		mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
+	exit(EXIT_SUCCESS);
+}
+
+int	quit_game(t_game *game)
+{
+	clean_display(game);
 	exit(EXIT_SUCCESS);
 }

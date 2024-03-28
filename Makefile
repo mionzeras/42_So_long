@@ -6,7 +6,7 @@
 #    By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 15:17:35 by gcampos-          #+#    #+#              #
-#    Updated: 2024/03/14 19:41:41 by gcampos-         ###   ########.fr        #
+#    Updated: 2024/03/28 23:08:59 by gcampos-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ CFLAGS = -Wall -Wextra -Werror -g
 INCLUDE = -I includes
 
 #FILES
-SRCS = src/clean.c src/create_map.c src/graphics.c src/main.c \
-		src/parsing.c src/utils.c
+SRCS = src/clean.c src/create_map.c src/graphics.c src/moves.c \
+		src/main.c src/parsing.c src/utils.c
 OBJS = ${SRCS:.c=.o}
 MAKE = make -C
 LIBFT_PATH = libft
