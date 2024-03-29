@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 22:56:59 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/28 23:32:13 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/03/29 00:11:57 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	move_up(t_game *game)
 		if (game->map[game->player_y - 1][game->player_x] == EXIT && game->c_count == 0)
 		{
 			ft_printf("YOU WIN!\n");
-			clean_display(game);
+			quit_game(game);
 		}
 		if (game->map[game->player_y - 1][game->player_x] == EXIT && game->c_count != 0)
 			return (0);
@@ -44,7 +44,7 @@ int	move_down(t_game *game)
 		if (game->map[game->player_y + 1][game->player_x] == EXIT && game->c_count == 0)
 		{
 			ft_printf("YOU WIN!\n");
-			clean_display(game);
+			quit_game(game);
 		}
 		if (game->map[game->player_y + 1][game->player_x] == EXIT && game->c_count != 0)
 			return (0);
@@ -67,7 +67,7 @@ int	move_left(t_game *game)
 		if (game->map[game->player_y][game->player_x - 1] == EXIT && game->c_count == 0)
 		{
 			ft_printf("YOU WIN!\n");
-			clean_display(game);
+			quit_game(game);
 		}
 		if (game->map[game->player_y][game->player_x - 1] == EXIT && game->c_count != 0)
 			return (0);
@@ -90,7 +90,7 @@ int	move_right(t_game *game)
 		if (game->map[game->player_y][game->player_x + 1] == EXIT && game->c_count == 0)
 		{
 			ft_printf("YOU WIN!\n");
-			clean_display(game);
+			quit_game(game);
 		}
 		if (game->map[game->player_y][game->player_x + 1] == EXIT && game->c_count != 0)
 			return (0);
@@ -107,7 +107,7 @@ int	move_right(t_game *game)
 int	check_key(int key, t_game *game)
 {
 	if (key == ESC)
-		clean_display(game);
+		quit_game(game);
 	else if (key == W || key == UP)
 		move_up(game);
 	else if (key == A || key == LEFT)

@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:01:59 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/28 23:14:13 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/03/28 23:45:07 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	clean_display(t_game *game)
 	if (game->mlx_ptr)
 		mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
-	exit(EXIT_SUCCESS);
 }
 
 int	quit_game(t_game *game)
