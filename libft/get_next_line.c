@@ -6,37 +6,49 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:41:22 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/14 20:05:35 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/03/31 14:34:49 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
+char	*get_read_txt(int fd, char *str)
+{
+	char	*buffer;
+	int		qtd_bytes;
+
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (NULL);
+	qtd_bytes = 1;
+	while (!get_strchr(str, '\n') && qtd_bytes != 0)
+	{
+		qtd_bytes = read(fd, buffer, BUFFER_SIZE);
+		if (qtd_bytes == -1 || !buffer)
+		{
+			free(buffer);
+			buffer = NULL;
+			free(str);
+			return (NULL);
+		}
+		buffer[qtd_bytes] = '\0';
+		str = get_strjoin(str, buffer);
+	}
+	free(buffer);
+	return (str);
+}
 
 char	*get_next_line(int fd)
 {
-	char	*buffer;
-	char	character;
-	int		i;
-	int		rd;
+	char		*line;
+	static char	*str;
 
-	i = 0;
-	rd = 1;
-	character = 0;
-	if (BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = malloc(100000);
-	while (rd > 0)
-	{
-		rd = read(fd, &character, BUFFER_SIZE - BUFFER_SIZE + 1);
-		if (rd == 0)
-			break ;
-		buffer[i++] = character;
-		if (character == '\n')
-			break ;
-	}
-	buffer[i] = '\0';
-	if (rd == -1 || i == 0 || (!buffer[i - 1] && !rd))
-		return (free(buffer), NULL);
-	return (buffer);
+	str = get_read_txt(fd, str);
+	if (!str)
+		return (NULL);
+	line = ft_get_line(str);
+	str = keep_rest(str);
+	return (line);
 }
