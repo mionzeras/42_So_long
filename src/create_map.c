@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:19:58 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/28 23:34:54 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/04/05 18:09:48 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	line_size(t_game *game, char *line)
 	int	i;
 
 	i = 0;
-	while(line[i] && line[i] != '\n' && line[i] != '\0')
+	while (line[i] && line[i] != '\n' && line[i] != '\0')
 		i++;
 	if (i != game->map_width)
 	{
@@ -28,8 +28,8 @@ static void	line_size(t_game *game, char *line)
 
 void	map_create(t_game *game)
 {
-	int	fd;
-	int	i;
+	int		fd;
+	int		i;
 	char	*line;
 
 	i = -1;
@@ -53,7 +53,7 @@ void	map_create(t_game *game)
 
 void	read_map(t_game	*game)
 {
-	int	fd;
+	int		fd;
 	char	*line;
 
 	game->i = 0;
@@ -69,7 +69,7 @@ void	read_map(t_game	*game)
 	game->j = ft_strlen(line) - 1;
 	while (line)
 	{
-		free(line); 
+		free(line);
 		game->i++;
 		line = get_next_line(fd);
 	}

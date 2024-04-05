@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:56:49 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/28 23:23:15 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/04/05 18:06:14 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,20 @@
 // This struct will be used to store the game
 typedef struct s_game
 {
-	int i;
-	int j;
-	int	map_height;
-	int	map_width;
-	int	c_count;
-	int	e_count;
-	int	p_count;
-	int	player_x;
-	int	player_y;
-	int	moves;
+	int		i;
+	int		j;
+	int		map_height;
+	int		map_width;
+	int		c_count;
+	int		e_count;
+	int		p_count;
+	int		player_x;
+	int		player_y;
+	int		moves;
 
 	char	**map;
 	char	*file_location;
-	
+
 	void	*img_p;
 	void	*img_c;
 	void	*img_1;
@@ -59,7 +59,7 @@ typedef struct s_game
 	void	*img_0;
 	void	*mlx_ptr;
 	void	*win_ptr;
-	
+
 }	t_game;
 
 // clean.c
@@ -79,22 +79,22 @@ void	render_tiles(t_game *game, int x, int y);
 void	render_map(t_game *game);
 
 // moves.c
-int	move_up(t_game *game);
-int	move_down(t_game *game);
-int	move_left(t_game *game);
-int	move_right(t_game *game);
-int	check_key(int key, t_game *game);
+int		move_up(t_game *game);
+int		move_down(t_game *game);
+int		move_left(t_game *game);
+int		move_right(t_game *game);
+int		check_key(int key, t_game *game);
 
 // parsing.c
-int	game_counters(t_game *game);
-int	check_wall(t_game *game);
-int	check_tiles(t_game *game);
-int	check_path(t_game *game);
+int		game_counters(t_game *game);
+int		check_wall(t_game *game);
+int		check_tiles(t_game *game);
+int		check_path(t_game *game);
 void	check_map(t_game *game);
 
 // utils.c
-int	flood_fill(char **game, size_t x, size_t y);
+int		lood_fill(char **game, size_t x, size_t y);
 void	filename(t_game *game, char *file);
-int	exit_error(t_game *game, char *msg);
+int		exit_error(t_game *game, char *msg);
 
 #endif

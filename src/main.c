@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:52:26 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/28 23:16:14 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/04/05 18:13:16 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_game(char *file)
 {
 	t_game	game;
-	
+
 	ft_bzero(&game, sizeof(t_game));
 	filename(&game, file);
 	read_map(&game);
@@ -29,7 +29,7 @@ void	init_game(char *file)
 	mlx_loop(game.mlx_ptr);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (ac != 2)
 		exit_error(NULL, "Invalid number of arguments\n");

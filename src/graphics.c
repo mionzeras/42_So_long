@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:36:51 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/28 22:09:44 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/04/05 18:12:31 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_mlx(t_game *game)
 	if (!game->win_ptr)
 		exit_error(game, "Error creating window\n");
 }
+
 void	load_images(t_game *game)
 {
 	int	i;
@@ -29,12 +30,16 @@ void	load_images(t_game *game)
 
 	i = SIZE;
 	j = SIZE;
-
-	game->img_0 = mlx_xpm_file_to_image(game->mlx_ptr, "textures/0.xpm", &i, &j);
-	game->img_1 = mlx_xpm_file_to_image(game->mlx_ptr, "textures/1.xpm", &i, &j);
-	game->img_c = mlx_xpm_file_to_image(game->mlx_ptr, "textures/C.xpm", &i, &j);
-	game->img_p = mlx_xpm_file_to_image(game->mlx_ptr, "textures/P.xpm", &i, &j);
-	game->img_w = mlx_xpm_file_to_image(game->mlx_ptr, "textures/W.xpm", &i, &j);
+	game->img_0 = mlx_xpm_file_to_image(game->mlx_ptr,
+			"textures/0.xpm", &i, &j);
+	game->img_1 = mlx_xpm_file_to_image(game->mlx_ptr,
+			"textures/1.xpm", &i, &j);
+	game->img_c = mlx_xpm_file_to_image(game->mlx_ptr,
+			"textures/C.xpm", &i, &j);
+	game->img_p = mlx_xpm_file_to_image(game->mlx_ptr,
+			"textures/P.xpm", &i, &j);
+	game->img_w = mlx_xpm_file_to_image(game->mlx_ptr,
+			"textures/W.xpm", &i, &j);
 }
 
 void	render_tiles(t_game *game, int x, int y)
@@ -55,11 +60,12 @@ void	render_tiles(t_game *game, int x, int y)
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
 				game->img_1, x * SIZE, y * SIZE);
 }
+
 void	render_map(t_game *game)
 {
-	int x;
-	int y;
-	
+	int	x;
+	int	y;
+
 	y = -1;
 	while (++y < game->map_height)
 	{

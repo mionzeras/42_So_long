@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:01:59 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/28 23:45:07 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/04/05 18:08:28 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	clean_map(char **map)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (!map)
-		return ;		
+		return ;
 	while (map[++i])
 		free (map[i]);
 	free(map);

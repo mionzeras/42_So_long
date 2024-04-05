@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:45:33 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/06 20:19:19 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/04/05 18:16:01 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	flood_fill(char **game, size_t x, size_t y)
 {
 	static int	count = 0;
+
 	if (game[x][y] == WALL)
 		return (0);
 	if (game[x][y] == EXIT)
@@ -30,7 +31,7 @@ int	flood_fill(char **game, size_t x, size_t y)
 void	filename(t_game *game, char *file)
 {
 	size_t	i;
-	int 	fd;
+	int		fd;
 
 	i = ft_strlen(file);
 	if (i <= 4)

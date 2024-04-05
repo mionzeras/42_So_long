@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 22:56:59 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/31 15:12:47 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/04/05 18:14:30 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ int	move_up(t_game *game)
 	{
 		if (game->map[game->player_x - 1][game->player_y] == COLLECTIBLE)
 			game->c_count--;
-		if (game->map[game->player_x - 1][game->player_y] == EXIT && game->c_count == 0)
+		if (game->map[game->player_x - 1][game->player_y] == EXIT
+				&& game->c_count == 0)
 		{
 			ft_printf("YOU WIN!\n");
 			quit_game(game);
 		}
-		if (game->map[game->player_x - 1][game->player_y] == EXIT && game->c_count != 0)
+		if (game->map[game->player_x - 1][game->player_y] == EXIT
+				&& game->c_count != 0)
 			return (0);
 		game->map[game->player_x][game->player_y] = EMPTY;
 		game->player_x--;
@@ -41,12 +43,14 @@ int	move_down(t_game *game)
 	{
 		if (game->map[game->player_x + 1][game->player_y] == COLLECTIBLE)
 			game->c_count--;
-		if (game->map[game->player_x + 1][game->player_y] == EXIT && game->c_count == 0)
+		if (game->map[game->player_x + 1][game->player_y] == EXIT
+				&& game->c_count == 0)
 		{
 			ft_printf("YOU WIN!\n");
 			quit_game(game);
 		}
-		if (game->map[game->player_x + 1][game->player_y] == EXIT && game->c_count != 0)
+		if (game->map[game->player_x + 1][game->player_y] == EXIT
+				&& game->c_count != 0)
 			return (0);
 		game->map[game->player_x][game->player_y] = EMPTY;
 		game->player_x++;
@@ -64,12 +68,14 @@ int	move_left(t_game *game)
 	{
 		if (game->map[game->player_x][game->player_y - 1] == COLLECTIBLE)
 			game->c_count--;
-		if (game->map[game->player_x][game->player_y - 1] == EXIT && game->c_count == 0)
+		if (game->map[game->player_x][game->player_y - 1] == EXIT
+				&& game->c_count == 0)
 		{
 			ft_printf("YOU WIN!\n");
 			quit_game(game);
 		}
-		if (game->map[game->player_x][game->player_y - 1] == EXIT && game->c_count != 0)
+		if (game->map[game->player_x][game->player_y - 1] == EXIT
+				&& game->c_count != 0)
 			return (0);
 		game->map[game->player_x][game->player_y] = EMPTY;
 		game->player_y--;
@@ -87,12 +93,14 @@ int	move_right(t_game *game)
 	{
 		if (game->map[game->player_x][game->player_y + 1] == COLLECTIBLE)
 			game->c_count--;
-		if (game->map[game->player_x][game->player_y + 1] == EXIT && game->c_count == 0)
+		if (game->map[game->player_x][game->player_y + 1] == EXIT
+				&& game->c_count == 0)
 		{
 			ft_printf("YOU WIN!\n");
 			quit_game(game);
 		}
-		if (game->map[game->player_x][game->player_y + 1] == EXIT && game->c_count != 0)
+		if (game->map[game->player_x][game->player_y + 1] == EXIT
+				&& game->c_count != 0)
 			return (0);
 		game->map[game->player_x][game->player_y] = EMPTY;
 		game->player_y++;

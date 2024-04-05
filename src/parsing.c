@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:10:28 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/28 23:35:59 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/04/05 18:15:19 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,20 @@ int	check_wall(t_game *game)
 	i = -1;
 	while (++i < game->map_height)
 	{
-		if (game->map[i][0] != WALL || game->map[i][game->map_width - 1] != WALL)
+		if (game->map[i][0] != WALL ||
+				game->map[i][game->map_width - 1] != WALL)
 			return (0);
 	}
 	i = -1;
 	while (++i < game->map_width)
 	{
-		if (game->map[0][i] != WALL || game->map[game->map_height - 1][i] != WALL)
+		if (game->map[0][i] != WALL ||
+				game->map[game->map_height - 1][i] != WALL)
 			return (0);
 	}
 	return (1);
 }
+
 int	check_tiles(t_game *game)
 {
 	int	i;
@@ -68,8 +71,8 @@ int	check_tiles(t_game *game)
 
 int	check_path(t_game *game)
 {
-	int	i;
-	int	reached;
+	int		i;
+	int		reached;
 	char	**path;
 
 	i = -1;
