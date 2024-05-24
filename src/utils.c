@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:45:33 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/04/05 18:16:01 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/05/24 19:00:42 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	filename(t_game *game, char *file)
 		exit_error(NULL, "Invalid file extension\n");
 	if (!ft_strnstr(file + i - 4, ".ber", 4))
 		exit_error(NULL, "File must have .ber extension\n");
-	game->file_location = ft_strjoin("map/", file);
+	game->file_location = ft_strdup(file);
 	if (!game->file_location)
 		exit_error(NULL, "strjoin failed\n");
 	fd = open(game->file_location, O_RDONLY);
