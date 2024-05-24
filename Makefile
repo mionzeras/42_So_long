@@ -6,7 +6,7 @@
 #    By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 15:17:35 by gcampos-          #+#    #+#              #
-#    Updated: 2024/03/28 23:08:59 by gcampos-         ###   ########.fr        #
+#    Updated: 2024/04/24 17:13:09 by gcampos-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ OBJS = ${SRCS:.c=.o}
 MAKE = make -C
 LIBFT_PATH = libft
 LIBFT = -Llibft -lft
-MLX_PATH = mlx
-MLX = -Lmlx -lmlx -Ilmlx -lXext -lX11
+MLX_PATH = minilibx-linux
+MLX = -L ${MLX_PATH} -lmlx -Ilmlx -lXext -lX11 -lm
 
 .c.o:
 		${CC} ${CFLAGS} ${INCLUDE} -c $< -o ${<:.c=.o}

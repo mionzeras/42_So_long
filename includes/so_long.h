@@ -6,14 +6,14 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:56:49 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/04/05 18:06:14 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:03:10 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../mlx/mlx.h" 
+# include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 
 // MACROS
@@ -93,7 +93,7 @@ int		check_path(t_game *game);
 void	check_map(t_game *game);
 
 // utils.c
-int		lood_fill(char **game, size_t x, size_t y);
+int		flood_fill(char **game, size_t x, size_t y);
 void	filename(t_game *game, char *file);
 int		exit_error(t_game *game, char *msg);
 
