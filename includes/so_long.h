@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:56:49 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/04/24 17:03:10 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/06/05 19:12:20 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_game
 	int		player_x;
 	int		player_y;
 	int		moves;
+	int		on_exit;
 
 	char	**map;
 	char	*file_location;

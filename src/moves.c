@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 22:56:59 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/04/05 18:14:30 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/05/24 21:17:04 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	move_up(t_game *game)
 {
-	if (game->map[game->player_x - 1][game->player_y] != WALL)
+	if (game->map[game->player_x - 1][game->player_y] != WALL && game->on_exit == 0)
 	{
 		if (game->map[game->player_x - 1][game->player_y] == COLLECTIBLE)
 			game->c_count--;
@@ -26,20 +26,31 @@ int	move_up(t_game *game)
 		}
 		if (game->map[game->player_x - 1][game->player_y] == EXIT
 				&& game->c_count != 0)
-			return (0);
+			game->on_exit = 1;
 		game->map[game->player_x][game->player_y] = EMPTY;
 		game->player_x--;
 		game->map[game->player_x][game->player_y] = PLAYER;
 		game->moves++;
 		ft_printf("Moves: %d\n", game->moves);
-		render_map(game);
 	}
+	else if (game->map[game->player_x - 1][game->player_y] != WALL && game->on_exit == 1)
+	{
+		if (game->map[game->player_x - 1][game->player_y] == COLLECTIBLE)
+			game->c_count--;
+		game->map[game->player_x][game->player_y] = EXIT;
+		game->player_x--;
+		game->map[game->player_x][game->player_y] = PLAYER;
+		game->moves++;
+		game->on_exit = 0;
+		ft_printf("Moves: %d\n", game->moves);
+	}
+	render_map(game);
 	return (0);
 }
 
 int	move_down(t_game *game)
 {
-	if (game->map[game->player_x + 1][game->player_y] != WALL)
+	if (game->map[game->player_x + 1][game->player_y] != WALL && game->on_exit == 0)
 	{
 		if (game->map[game->player_x + 1][game->player_y] == COLLECTIBLE)
 			game->c_count--;
@@ -51,20 +62,31 @@ int	move_down(t_game *game)
 		}
 		if (game->map[game->player_x + 1][game->player_y] == EXIT
 				&& game->c_count != 0)
-			return (0);
+			game->on_exit = 1;
 		game->map[game->player_x][game->player_y] = EMPTY;
 		game->player_x++;
 		game->map[game->player_x][game->player_y] = PLAYER;
 		game->moves++;
 		ft_printf("Moves: %d\n", game->moves);
-		render_map(game);
 	}
+	else if (game->map[game->player_x + 1][game->player_y] != WALL && game->on_exit == 1)
+	{
+		if (game->map[game->player_x + 1][game->player_y] == COLLECTIBLE)
+			game->c_count--;
+		game->map[game->player_x][game->player_y] = EXIT;
+		game->player_x++;
+		game->map[game->player_x][game->player_y] = PLAYER;
+		game->moves++;
+		game->on_exit = 0;
+		ft_printf("Moves: %d\n", game->moves);
+	}
+	render_map(game);
 	return (0);
 }
 
 int	move_left(t_game *game)
 {
-	if (game->map[game->player_x][game->player_y - 1] != WALL)
+	if (game->map[game->player_x][game->player_y - 1] != WALL && game->on_exit == 0)
 	{
 		if (game->map[game->player_x][game->player_y - 1] == COLLECTIBLE)
 			game->c_count--;
@@ -76,20 +98,31 @@ int	move_left(t_game *game)
 		}
 		if (game->map[game->player_x][game->player_y - 1] == EXIT
 				&& game->c_count != 0)
-			return (0);
+			game->on_exit = 1;
 		game->map[game->player_x][game->player_y] = EMPTY;
 		game->player_y--;
 		game->map[game->player_x][game->player_y] = PLAYER;
 		game->moves++;
 		ft_printf("Moves: %d\n", game->moves);
-		render_map(game);
 	}
+	else if (game->map[game->player_x][game->player_y - 1] != WALL && game->on_exit == 1)
+	{
+		if (game->map[game->player_x][game->player_y - 1] == COLLECTIBLE)
+			game->c_count--;
+		game->map[game->player_x][game->player_y] = EXIT;
+		game->player_y--;
+		game->map[game->player_x][game->player_y] = PLAYER;
+		game->moves++;
+		game->on_exit = 0;
+		ft_printf("Moves: %d\n", game->moves);
+	}
+	render_map(game);
 	return (0);
 }
 
 int	move_right(t_game *game)
 {
-	if (game->map[game->player_x][game->player_y + 1] != WALL)
+	if (game->map[game->player_x][game->player_y + 1] != WALL && game->on_exit == 0)
 	{
 		if (game->map[game->player_x][game->player_y + 1] == COLLECTIBLE)
 			game->c_count--;
@@ -101,14 +134,25 @@ int	move_right(t_game *game)
 		}
 		if (game->map[game->player_x][game->player_y + 1] == EXIT
 				&& game->c_count != 0)
-			return (0);
+			game->on_exit = 1;
 		game->map[game->player_x][game->player_y] = EMPTY;
 		game->player_y++;
 		game->map[game->player_x][game->player_y] = PLAYER;
 		game->moves++;
 		ft_printf("Moves: %d\n", game->moves);
-		render_map(game);
 	}
+	else if (game->map[game->player_x][game->player_y + 1] != WALL && game->on_exit == 1)
+	{
+		if (game->map[game->player_x][game->player_y + 1] == COLLECTIBLE)
+			game->c_count--;
+		game->map[game->player_x][game->player_y] = EXIT;
+		game->player_y++;
+		game->map[game->player_x][game->player_y] = PLAYER;
+		game->moves++;
+		game->on_exit = 0;
+		ft_printf("Moves: %d\n", game->moves);
+	}
+	render_map(game);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:45:33 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/05/24 19:00:42 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:33:10 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,24 @@ int	flood_fill(char **game, size_t x, size_t y)
 void	filename(t_game *game, char *file)
 {
 	size_t	i;
-	int		fd;
 
 	i = ft_strlen(file);
-	if (i <= 4)
-		exit_error(NULL, "Invalid file extension\n");
-	if (!ft_strnstr(file + i - 4, ".ber", 4))
-		exit_error(NULL, "File must have .ber extension\n");
 	game->file_location = ft_strdup(file);
+	ft_printf("%s\n", game->file_location);
 	if (!game->file_location)
 		exit_error(NULL, "strjoin failed\n");
-	fd = open(game->file_location, O_RDONLY);
-	if (fd < 0)
-		exit_error(NULL, "File not found\n");
-	close(fd);
+	if (access(game->file_location, F_OK))
+		exit_error(game, "No exist map\n");
+	if (access(game->file_location, R_OK))
+		exit_error(game, "Permission denied\n");
+	if (!ft_strnstr(file + i - 4, ".ber", 4))
+		exit_error(game, "Bad extension\n");
 }
 
 int	exit_error(t_game *game, char *msg)
 {
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(msg, 2);
+	ft_putstr_fd("Error\n", 1);
+	ft_putstr_fd(msg, 1);
 	clean_display(game);
 	exit(EXIT_FAILURE);
 }

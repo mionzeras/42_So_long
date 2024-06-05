@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:10:28 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/04/05 18:15:19 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/05/24 20:10:43 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,22 @@
 
 int	game_counters(t_game *game)
 {
+	if (game->p_count != 1)
+	{
+		if (game->p_count < 1)
+			exit_error(game, "No player\n");
+		else
+			exit_error(game, "Duplicate player\n");
+	}
+	if (game->e_count != 1)
+	{
+		if (game->e_count < 1)
+			exit_error(game, "No exit\n");
+		else
+			exit_error(game, "Duplicate exit\n");
+	}
+	if (game->c_count == 0)
+		exit_error(game, "No object\n");
 	if (game->p_count != 1 || game->e_count != 1 || game->c_count == 0)
 		exit_error(game, "Invalid map\n");
 	return (1);

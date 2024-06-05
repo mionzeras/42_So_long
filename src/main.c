@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:52:26 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/04/05 18:13:16 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/05/24 19:32:00 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_game(char *file)
 int	main(int ac, char **av)
 {
 	if (ac != 2)
-		exit_error(NULL, "Invalid number of arguments\n");
+		exit_error(NULL, "Wrong number of arguments\n");
 	init_game(av[1]);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:19:58 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/04/05 18:09:48 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/06/05 19:10:29 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	line_size(t_game *game, char *line)
+static void	line_size(t_game *game, char *line, int fd)
 {
 	int	i;
 
@@ -21,8 +21,12 @@ static void	line_size(t_game *game, char *line)
 		i++;
 	if (i != game->map_width)
 	{
-		free(line);
-		exit_error(game, "Different line sizes\n");
+		while (line)
+		{
+			free(line);
+			line = get_next_line(fd);
+		}
+		exit_error(game, "No rectangular\n");
 	}
 }
 
@@ -42,7 +46,7 @@ void	map_create(t_game *game)
 		line = get_next_line(fd);
 		if (!line)
 			free(line);
-		line_size(game, line);
+		line_size(game, line, fd);
 		game->map[i] = ft_strtrim(line, "\n");
 		if (!game->map[i])
 			exit_error(game, "Could not copy map\n");

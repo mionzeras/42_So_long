@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 19:48:24 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/03/06 20:25:13 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:28:32 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ char	*ft_strdup(const char *s)
 	str2 = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	i = 0;
 	if (!str2)
-	{
-		free(str2);
 		return (NULL);
-	}
 	while (s[i])
 	{
 		str2[i] = s[i];
