@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 22:56:59 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/06/06 17:22:47 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:46:10 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	move_up(t_game *game)
 	else if (game->map[game->p_x - 1][game->p_y] != WALL && game->on_exit == 1)
 		move_exit(game);
 	if (game->map[game->p_x - 1][game->p_y] == COLLECTIBLE)
-			game->c_count--;
+		game->c_count--;
 	if (game->map[game->p_x - 1][game->p_y] != WALL)
 	{
 		game->p_x--;
@@ -56,7 +56,7 @@ int	move_down(t_game *game)
 	else if (game->map[game->p_x + 1][game->p_y] != WALL && game->on_exit == 1)
 		move_exit(game);
 	if (game->map[game->p_x + 1][game->p_y] == COLLECTIBLE)
-			game->c_count--;
+		game->c_count--;
 	if (game->map[game->p_x + 1][game->p_y] != WALL)
 	{
 		game->p_x++;
@@ -84,7 +84,7 @@ int	move_left(t_game *game)
 	else if (game->map[game->p_x][game->p_y - 1] != WALL && game->on_exit == 1)
 		move_exit(game);
 	if (game->map[game->p_x][game->p_y - 1] == COLLECTIBLE)
-			game->c_count--;
+		game->c_count--;
 	if (game->map[game->p_x][game->p_y - 1] != WALL)
 	{
 		game->p_y--;
@@ -112,7 +112,7 @@ int	move_right(t_game *game)
 	else if (game->map[game->p_x][game->p_y + 1] != WALL && game->on_exit == 1)
 		move_exit(game);
 	if (game->map[game->p_x][game->p_y + 1] == COLLECTIBLE)
-			game->c_count--;
+		game->c_count--;
 	if (game->map[game->p_x][game->p_y + 1] != WALL)
 	{
 		game->p_y++;
