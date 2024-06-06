@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:56:49 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/06/05 19:12:20 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:13:07 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ typedef struct s_game
 	int		c_count;
 	int		e_count;
 	int		p_count;
-	int		player_x;
-	int		player_y;
+	int		p_x;
+	int		p_y;
 	int		moves;
 	int		on_exit;
 
@@ -94,6 +94,7 @@ int		check_path(t_game *game);
 void	check_map(t_game *game);
 
 // utils.c
+void	move_exit(t_game *game);
 int		flood_fill(char **game, size_t x, size_t y);
 void	filename(t_game *game, char *file);
 int		exit_error(t_game *game, char *msg);

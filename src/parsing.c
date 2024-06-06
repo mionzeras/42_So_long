@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:10:28 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/05/24 20:10:43 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:44:14 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	check_tiles(t_game *game)
 		{
 			if (game->map[i][j] == PLAYER)
 			{
-				game->player_x = i;
-				game->player_y = j;
+				game->p_x = i;
+				game->p_y = j;
 				game->p_count++;
 			}
 			else if (game->map[i][j] == EXIT)
@@ -105,7 +105,7 @@ int	check_path(t_game *game)
 			exit_error(game, "Memory allocation failed\n");
 		}
 	}
-	reached = flood_fill(path, game->player_x, game->player_y);
+	reached = flood_fill(path, game->p_x, game->p_y);
 	clean_map(path);
 	return (reached);
 }

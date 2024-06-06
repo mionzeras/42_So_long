@@ -6,11 +6,17 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:45:33 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/06/05 18:33:10 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:12:44 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	move_exit(t_game *game)
+{
+	game->map[game->p_x][game->p_y] = EXIT;
+	game->on_exit = 0;
+}
 
 int	flood_fill(char **game, size_t x, size_t y)
 {
