@@ -6,7 +6,7 @@
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 13:45:33 by gcampos-          #+#    #+#             */
-/*   Updated: 2024/06/06 17:12:44 by gcampos-         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:57:55 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	filename(t_game *game, char *file)
 
 	i = ft_strlen(file);
 	game->file_location = ft_strdup(file);
-	ft_printf("%s\n", game->file_location);
 	if (!game->file_location)
 		exit_error(NULL, "strjoin failed\n");
 	if (access(game->file_location, F_OK))
