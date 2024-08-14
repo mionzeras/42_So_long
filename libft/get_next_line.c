@@ -5,75 +5,65 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcampos- <gcampos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 09:56:49 by prossi            #+#    #+#             */
-/*   Updated: 2024/05/24 18:59:37 by gcampos-         ###   ########.fr       */
+/*   Created: 2023/05/31 15:41:22 by gcampos-          #+#    #+#             */
+/*   Updated: 2024/08/14 18:04:26 by gcampos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"	
+#include "libft.h"
 
-static char	*function_name(int fd, char *buf, char *backup)
+char	*get_read_txt(int fd, char *str)
 {
-	int		read_line;
-	char	*char_temp;
+	char	*buffer;
+	int		qtd_bytes;
 
-	read_line = 1;
-	while (read_line != '\0')
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (NULL);
+	qtd_bytes = 1;
+	while (!get_strchr(str, '\n') && qtd_bytes != 0)
 	{
-		read_line = read(fd, buf, BUFFER_SIZE);
-		if (read_line == -1)
-			return (0);
-		else if (read_line == 0)
-			break ;
-		buf[read_line] = '\0';
-		if (!backup)
-			backup = ft_strdup("");
-		char_temp = backup;
-		backup = ft_strjoin(char_temp, buf);
-		free(char_temp);
-		char_temp = NULL;
-		if (ft_strchr (buf, '\n'))
-			break ;
+		qtd_bytes = read(fd, buffer, BUFFER_SIZE);
+		if (qtd_bytes == -1)
+		{
+			free(buffer);
+			free(str);
+			return (NULL);
+		}
+		buffer[qtd_bytes] = '\0';
+		str = get_strjoin(str, buffer);
 	}
-	return (backup);
-}
-
-static char	*extract(char *line)
-{
-	size_t	count;
-	char	*backup;
-
-	count = 0;
-	while (line[count] != '\n' && line[count] != '\0')
-		count++;
-	if (line[count] == '\0' || line[1] == '\0')
-		return (0);
-	backup = ft_substr(line, count + 1, ft_strlen(line) - count);
-	if (*backup == '\0')
-	{
-		free(backup);
-		backup = NULL;
-	}
-	line[count + 1] = '\0';
-	return (backup);
+	free(buffer);
+	return (str);
 }
 
 char	*get_next_line(int fd)
 {
 	char		*line;
-	char		*buf;
-	static char	*backup;
+	static char	*str;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
-	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buf)
-		return (0);
-	line = function_name(fd, buf, backup);
-	free(buf);
-	buf = NULL;
-	if (!line)
 		return (NULL);
-	backup = extract(line);
+	str = get_read_txt(fd, str);
+	if (!str)
+		return (NULL);
+	line = ft_get_line(str);
+	str = keep_rest(str);
 	return (line);
 }
+
+/*int	main(void)
+{
+	int	fd = open("teste.txt", O_RDONLY);
+	
+	if (fd == -1)
+		return (1);
+	char	 *line = get_next_line(fd);
+	while (line)
+	{
+		printf("%s", line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+}*/
